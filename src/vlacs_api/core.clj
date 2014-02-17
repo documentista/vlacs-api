@@ -3,6 +3,7 @@
     [liberator.core :refer [resource defresource]]
     [ring.middleware.params :refer [wrap-params]]
     [ring.adapter.jetty :refer [run-jetty]]
+    [ring.middleware.format :refer [wrap-restful-format]]
     [compojure.core :refer [defroutes ANY]])
 
 (defroutes app
@@ -10,6 +11,7 @@
 
 (def handler
   (-> app
-      (wrap-params)))
+      (wrap-params)
+      (wrap-restful-format)))
 
-(run-jetty #'handler {:port 3000} )
+(def server (run-jetty #'app {:port 3000 :join? false}))
