@@ -8,4 +8,9 @@
                  [compojure "1.1.3"]
 		 [ring/ring-core "1.2.1"]
                  [ring/ring-jetty-adapter "1.1.0"]
-                 [ring-middleware-format "0.3.1"]])
+                 [ring-middleware-format "0.3.2"]]
+  :main vlacs-api.core
+
+  ;;:plugins [[lein-ring "0.8.8" :exclusions [org.clojure/clojure]]] 
+
+  :ring {:handler vlacs-api.core/app})
